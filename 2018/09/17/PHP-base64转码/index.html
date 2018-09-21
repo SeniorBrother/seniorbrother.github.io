@@ -7,7 +7,7 @@
 		
 
 <head>
-	<title>分类</title>
+	<title>渡-心记</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -49,7 +49,7 @@
 	
 	
 		
-			<p class="page-name">分类</p>
+			<p class="page-name"></p>
 		
 		
 	
@@ -96,35 +96,124 @@
 
 		<main>
 		<div class="page-container">
-		<!--content start-->
-<div class="am-g am-g-fixed blog-fixed blog-content">
-    <div class="am-u-md-8 am-u-sm-12">
-        <article class="am-article blog-article-p">
-
-            <div class="page-header">
-	<div class="blog-text-center">
 		
+    <!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+	<div class="am-u-md-8 am-u-sm-12">
+
+		<article class="am-article blog-article-p">
+			<div class="am-article-hd">
+				
+
+
+				<h1 class="am-article-title blog-text-center">
+					
+					
+
+
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2018/09/17/PHP-base64转码/" itemprop="url">
+	<time datetime="2018-09-17T08:40:02.137Z" itemprop="datePublished">
+  		2018-09-17
+  </time>
+</a>    
+&nbsp
+					</span>
+					<span>						
+						
+					</span>	
+				</p>
+			</div>	
+
+			<div class="am-article-bd">
+				<div class="content">
+					<pre><code>    $string = &#39;仅限推广员开通使用， 他用无效&#39;;
+    $data = base64_encode($string);
+    $data = str_replace(array(&#39;+&#39;,&#39;/&#39;,&#39;=&#39;),array(&#39;-&#39;,&#39;_&#39;,&#39;&#39;),$data);
+    return $this-&gt;end($data);
+</code></pre>
+				</div>
+			</div>
+
+		</article>
+
+		<ul class="am-pagination">
+    
+    	<li class="am-pagination-prev">
+   		<a class="pull-left" href="/2018/09/18/Git配置多个SSH-key和git账号/" title="Git配置多个SSH key和git账号">
+      		&laquo;上一篇 
+		</a>
+		</li>
+	
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/09/14/Docker-大法好/" title="Docker 大法好">
+			下一篇&raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
 			
-			<i class="fa fa-pencil-square-o">总计1个分类</i>
-			
-		  	 		
-	</div>    	 		
-</div>  	 		
-    	 		
-    	 		
-    	 		
 
 
-            
-
-                <div class="category-list">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/编程技术/">编程技术</a><span class="category-list-count">3</span></li></ul>
-                </div>
-
-            
-        </article>
-    </div>
+	</div> 
 </div>
+
+<!-- code highlight 测试版fix me-->
+<style>
+pre {
+  background: inherit;
+  border: 1px solid #ccc;
+  overflow-x: auto;
+  padding: .5em;
+  position: relative;
+  margin: 0 0 0.8em 0;
+  overflow-y: hidden
+}
+
+pre code {
+  margin: -0.5em !important;
+  padding: 0.5em !important;
+  overflow-y: auto;
+  overflow-x: auto;
+  display: block
+}
+
+code.has-numbering {
+  margin-left: 1.7em !important;
+  word-wrap: normal;
+  word-break: keep-all;
+  white-space: pre
+}
+
+.pre-numbering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.2em;
+  height: 100%;
+  padding: 0.5em 0.2em 0.5em 0;
+  border-right: 1px solid #C3CCD0;
+  background-color: #EEE;
+  text-align: right;
+  color: #AAA;
+  list-style: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+</style>
+<script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+
+<!-- css爬取自网页 -->
+<!-- code highlight 测试版fix me-->
 
 
 		</div>
@@ -192,6 +281,11 @@
 	}
 </style>
 
+
+	<script src="/js/motto.js"></script>
+	<script>
+		$(".motto").html(getMingYanContent());
+	</script>	
 
 
 
