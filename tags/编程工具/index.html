@@ -7,7 +7,7 @@
 		
 
 <head>
-	<title>Git配置多个SSH key和git账号</title>
+	<title>Tag: 编程工具</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -49,7 +49,7 @@
 	
 	
 		
-			<p class="page-name">Git配置多个SSH key和git账号</p>
+			<p class="page-name"></p>
 		
 		
 	
@@ -96,233 +96,57 @@
 
 		<main>
 		<div class="page-container">
-		
-    <!-- content srart -->
+		<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
 	<div class="am-u-md-8 am-u-sm-12">
+		<div class="archive">
 
-		<article class="am-article blog-article-p">
-			<div class="am-article-hd">
+			<div class="blog-text-center">
 				
-
-
-				<h1 class="am-article-title blog-text-center">
-					
-					
-	
-		<a href="/2018/09/18/Git配置多个SSH-key和git账号/" itemprop="url">		
-			Git配置多个SSH key和git账号		
-		</a>
-	
-
-
-
-				</h1>
-
-				<p class="am-article-meta blog-text-center">
-					<span>
-						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/09/18/Git配置多个SSH-key和git账号/" itemprop="url">
-	<time datetime="2018-09-18T04:41:24.000Z" itemprop="datePublished">
-  		2018-09-18
-  </time>
-</a>    
-&nbsp
-					</span>
-					<span>						
-						
-					</span>	
-				</p>
-			</div>	
-
-			<div class="am-article-bd">
-				<div class="content">
-					<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>作为开发人员，可能拥有多个公司项目或者个人项目git账号，但是自己肯定希望一个笔记本就能解决登录管理公司项目、个人项目的 git 库。一台电脑多个github账号配置使用，现在我就来告诉大家我的学习心得和所遇到的的坑！</p>
-<p>首先感谢网上提供详细文档教程的用户，大家可以参考下：<a href="http://shinancao.github.io/2016/12/18/Programming-Git-1/" target="_blank" rel="noopener">意林小站的</a>、<a href="http://www.cnblogs.com/zichi/p/4704824.html" target="_blank" rel="noopener">韩子迟博客</a></p>
-<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><ol>
-<li>安装配置 Git</li>
-<li>生成多个 SSH key 公共密钥</li>
-<li>配置 SSH config 相关参数</li>
-<li>更新本地项目以及 .git</li>
-</ol>
-<h2 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h2><h3 id="安装-GIt"><a href="#安装-GIt" class="headerlink" title="安装 GIt"></a>安装 GIt</h3><ul>
-<li><p><strong>Mac OS 安装方法：</strong></p>
-<ul>
-<li>通过<code>homebrew</code> 安装 <code>Git</code> <a href="http://brew.sh/" target="_blank" rel="noopener">官网地址</a></li>
-<li>方法更简单，也是推荐的方法，就是直接从AppStore安装Xcode，Xcode集成了Git，不过默认没有安装，你需要运行Xcode，选择菜单“Xcode”-&gt;“Preferences”，在弹出窗口中找到“Downloads”，选择“Command Line Tools”，点“Install”就可以完成安装了</li>
-</ul>
-</li>
-<li><p><strong>Windows安装Git方法：</strong></p>
-<ul>
-<li>可以从<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git官网</a>直接下载安装程序，（网速慢的同学请移步国内镜像），然后按默认选项安装即可。<br>安装完成后，在开始菜单里找到 “Git”-&gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ </li>
-</ul>
-<p>安装完成后，还需要做全局设置，在命令行输入：</p>
-</li>
-</ul>
-<pre><code>$ git config user.name &quot;yourName&quot; // 给自己起个用户名
-$ git config user.email  &quot;yourEmail@qq.com&quot; // 填写自己的邮箱
-</code></pre><h3 id="生成新的ssh-key"><a href="#生成新的ssh-key" class="headerlink" title="生成新的ssh key"></a>生成新的ssh key</h3><p>按个人需求来，一般按项目名或者类别来命名。我个人就是喜欢分为公司、个人的 <code>ssh key</code>。用过 git 的会有默认的 <code>id_rsa.pub</code> 那就在生成新的 key</p>
-<ul>
-<li>生成新的 key 在终端执行命令：</li>
-</ul>
-<pre><code>$ ssh-keygen -t rsa -C &quot;youremail@xxx.com&quot;
-</code></pre><ul>
-<li>设置 key 名称</li>
-</ul>
-<pre><code>Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/liudou/.ssh/id_rsa): id_rsa_company(命名：此处 key 给公司用)
-Enter passphrase (empty for no passphrase):  （一般直接回车略过，避免繁琐设置密码）
-Enter same passphrase again:（再次输入密码，回车略过） 
-Your identification has been saved in 
-id_rsa_TestSSH_github.
-Your public key has been saved in 
-id_rsa_company.
-</code></pre><ul>
-<li>拷贝密钥到个人账号<br>一般直接打印复制到 各大git管理平台个人账号保存，可以终端输入：</li>
-</ul>
-<pre><code>$ cd ~/.ssh
-$ ls 
-$ cat id_rsa_company.pub // 根据个人命名来查询
-</code></pre><p>显示出来的内容复制到，我用的 <a href="https://code.aliyun.com/profile/keys" target="_blank" rel="noopener">阿里云key管理</a><br>如果打算拷贝你的公钥到你的粘贴板下，请参考你的操作系统使用以下的命令：</p>
-<p>Windows:</p>
-<pre><code>$ clip &lt; ~/.ssh/id_rsa.pub
-</code></pre><p>Mac:</p>
-<pre><code>$ pbcopy &lt; ~/.ssh/id_rsa.pub
-</code></pre><p>GNU/Linux (requires xclip):</p>
-<pre><code>$ xclip -sel clip &lt; ~/.ssh/id_rsa.pub
-</code></pre><p>保存到对应的git账号中 <code>ssh-key</code> 后，<code>ssh服务器</code> 默认是去找 <code>id_rsa</code> ，现在需要把新增的 <code>key</code> 添加到 <code>ssh-agent</code> 中，这样ssh服务器才能认识新加的 <code>id_rsa_company</code><br>此处需要进行如下操作：</p>
-<pre><code>$ ssh-add -K ~/.ssh/id_rsa_company
-</code></pre><blockquote>
-<p>Mac 用户： 这里为什么加上了一个-K参数呢？因为在Mac上，当系统重启后会“忘记”这个密钥，所以通过指定-K把SSH key导入到密钥链中。</p>
-</blockquote>
-<p>查看添加结果 ：</p>
-<pre><code>$ ssh-add -l
-</code></pre><h3 id="配置本地-SSH-config-文件"><a href="#配置本地-SSH-config-文件" class="headerlink" title="配置本地 SSH config 文件"></a>配置本地 SSH config 文件</h3><ol>
-<li>此处配置 ，需要新建 config 文件<br>在终端输入以下命令<pre><code>$ vim  ~/.ssh/config
-</code></pre></li>
-<li>写入配置内容，如下</li>
-</ol>
-<pre><code>#github
-Host github
-HostName github.com
-User git
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa
-
-#aliyun 企业项目 默认 code.aliyun.com
-Host code.aliyun.com // 此处别名可以自己定义
-HostName code.aliyun.com // 对应 git 服务平台域名不做改动
-User silence // 此处自己定义用户名
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_company // 输入新增 key 的路径
-
-#aliyun 个人
-Host sunrise #自定义 host别名 sunrise 等同于 code.aliyun.com
-HostName code.aliyun.com
-User Oracle
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_own
-</code></pre><p>配置好后保存：<br>按 <code>Esc</code> 退出编辑模式后 按<code>：</code>进入末行模式， 输入<code>wq</code> 保存退出！</p>
-<p>此配置文件， 我用上了 <code>github</code> 个人账号、<code>aliyun</code> 的企业子账号、个人账号共三个账号。配置文件至关重要的就是 <strong>Host别名</strong>，<code>code.aliyun.com</code> 域名相同只能用别名代替，达到同<code>aliyun</code>平台多个 git 账号连接</p>
-<ol start="3">
-<li>测试配置是否可用</li>
-</ol>
-<pre><code>$ ssh -T git@sunrise  (sunrise 是 config 文件中的 Host别名)
-</code></pre><p>如果连接成功会返回：</p>
-<pre><code>$ Welcome to GIT, 渡! // 用户名自己在git账号定义的 可以区分 个人 和 企业 git账号
-</code></pre><h3 id="git-更新项目代码"><a href="#git-更新项目代码" class="headerlink" title="git 更新项目代码"></a>git 更新项目代码</h3><p>此处需要说明，因为配置的原因，用了 Host 别名 key 配置的 git 账号。该账号下的 git 库，需要做处理</p>
-<ul>
-<li>该账号本地已有的 git 项目，需要进入项目目录修改<code>.git/config</code> 文件</li>
-</ul>
-<pre><code>[remote &quot;origin&quot;]
-    url = git@sunrise:23165-Sunrise/note.git
-    fetch = +refs/heads/*:refs/remotes/origin/*
-</code></pre><p>此处我把<code>url = git@code.aliyun.com:23165-Sunrise</code>,改为 <code>url = git@sunrise:23165-Sunrise</code></p>
-<ul>
-<li>如果线上git项目不在本地，请直接输入：</li>
-</ul>
-<pre><code>$ git clone git@sunrise:23165-Sunrise  (你账号项目 ssh 地址)
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其中关键点 就是 <code>.ssh/config</code> 配置的使用，<code>Host</code> 别名 等同于 <code>git</code> 服务平台域名。现在可以试试多个git账号，一台电脑使用！有不懂地方可以联系我。</p>
-
-				</div>
-			</div>
-
-		</article>
-
-		<ul class="am-pagination">
-    
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/09/22/Maca编程开发必备工具/" title="Mac 编程开发必备工具">
-      		&laquo;上一篇 
-		</a>
-		</li>
-	
-	
-		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/09/14/Docker-大法好/" title="Docker 大法好">
-			下一篇&raquo;
-		</a>
-		</li>
-	 
- </ul>
-        
+					<i class="fa fa-book">编程工具</i>
+				
+			</div>  
 
 			
 
+							
+				
+				
+				
+					
 
-	</div> 
+					
+					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
+				
+								
+				
+					  
+					<div class="archive-year">
+						<a href="/archives/2018/09">
+							2018-09
+						</a>
+					</div>				
+				  
+				
+				<div class="archive-item">
+					<div class="archive-post-title">									
+						<a href="/2018/09/22/Maca编程开发必备工具/" itemprop="url">Mac 编程开发必备工具</a>
+					</div>
+					<div class="archive-post-time">
+						<a href="/2018/09/22/Maca编程开发必备工具/" itemprop="url">09-22</a>
+					</div>
+				</div>		        							
+			
+				
+			
+
+        
+  
+  
+
+		</div>
+	</div>
 </div>
-
-<!-- code highlight 测试版fix me-->
-<style>
-pre {
-  background: inherit;
-  border: 1px solid #ccc;
-  overflow-x: auto;
-  padding: .5em;
-  position: relative;
-  margin: 0 0 0.8em 0;
-  overflow-y: hidden
-}
-
-pre code {
-  margin: -0.5em !important;
-  padding: 0.5em !important;
-  overflow-y: auto;
-  overflow-x: auto;
-  display: block
-}
-
-code.has-numbering {
-  margin-left: 1.7em !important;
-  word-wrap: normal;
-  word-break: keep-all;
-  white-space: pre
-}
-
-.pre-numbering {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.2em;
-  height: 100%;
-  padding: 0.5em 0.2em 0.5em 0;
-  border-right: 1px solid #C3CCD0;
-  background-color: #EEE;
-  text-align: right;
-  color: #AAA;
-  list-style: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none
-}
-</style>
-<script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-
-<!-- css爬取自网页 -->
-<!-- code highlight 测试版fix me-->
-
 
 		</div>
 		<footer>
@@ -389,11 +213,6 @@ code.has-numbering {
 	}
 </style>
 
-
-	<script src="/js/motto.js"></script>
-	<script>
-		$(".motto").html(getMingYanContent());
-	</script>	
 
 
 

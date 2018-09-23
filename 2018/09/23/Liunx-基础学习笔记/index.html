@@ -7,7 +7,7 @@
 		
 
 <head>
-	<title>Docker 大法好</title>
+	<title>Liunx-基础学习笔记</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -49,7 +49,7 @@
 	
 	
 		
-			<p class="page-name">Docker 大法好</p>
+			<p class="page-name">Liunx-基础学习笔记</p>
 		
 		
 	
@@ -110,8 +110,8 @@
 					
 					
 	
-		<a href="/2018/09/14/Docker-大法好/" itemprop="url">		
-			Docker 大法好		
+		<a href="/2018/09/23/Liunx-基础学习笔记/" itemprop="url">		
+			Liunx-基础学习笔记		
 		</a>
 	
 
@@ -122,9 +122,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/09/14/Docker-大法好/" itemprop="url">
-	<time datetime="2018-09-14T07:30:57.000Z" itemprop="datePublished">
-  		2018-09-14
+						<a href="/2018/09/23/Liunx-基础学习笔记/" itemprop="url">
+	<time datetime="2018-09-23T02:29:06.000Z" itemprop="datePublished">
+  		2018-09-23
   </time>
 </a>    
 &nbsp
@@ -133,9 +133,9 @@
 						
 							<i class="fa fa-tags"></i>
 							
-								<a href="#教程" title="教程" rel="3">教程</a>&nbsp
+								<a href="#Linux" title="Linux" rel="1">Linux</a>&nbsp
 							
-								<a href="#Docker" title="Docker" rel="1">Docker</a>&nbsp
+								<a href="#基础教程" title="基础教程" rel="1">基础教程</a>&nbsp
 													 											
 						
 					</span>	
@@ -144,225 +144,56 @@
 
 			<div class="am-article-bd">
 				<div class="content">
-					<h2 id="使用Docker的原因："><a href="#使用Docker的原因：" class="headerlink" title="使用Docker的原因："></a>使用<code>Docker</code>的原因：</h2><p>有时候团队开发急需一个本地环境，配置开发环境又快又稳定，那必须使用 Docker 的 image 镜像啦！<br>此处传送门 感谢大佬的提供的文档：<br> <a href="https://yeasy.gitbooks.io/docker_practice/content/basic_concept/" target="_blank" rel="noopener"><strong>教程：Docker 入门到实践</strong></a>此教程适合 <code>Mac OS</code> 用户</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
-<li><p>杀死所有正在运行的容器</p>
-<pre><code>$ docker kill $(docker ps -a -q)
-</code></pre></li>
-<li><p>删除所有已经停止的容器</p>
-<pre><code>$ docker rm $(docker ps -a -q)
-</code></pre></li>
-<li><p>删除所有未打 dangling 标签的镜像</p>
-<pre><code>$ docker rmi $(docker images -q -f dangling=true)
-</code></pre></li>
-<li><p>删除所有镜像</p>
-<pre><code>docker rmi $(docker images -q)
-</code></pre></li>
-</ul>
-<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
-<li>使用 <code>Homebrew</code> 安装<pre><code>$ brew cask install docker
-</code></pre></li>
-<li>在任务栏点击 Docker for mac 应用图标 -&gt; Perferences… -&gt; Daemon -&gt; Registry mirrors。在列表中填写加速器地址<code>https://registry.docker-cn.com</code>。修改完成之后，点击 Apply &amp; Restart 按钮，Docker 就会重启并应用配置的镜像地址了。</li>
-<li>获取镜像 ，从仓库获取镜像<pre><code>$ docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
-</code></pre></li>
-<li>运行镜像：<pre><code>$ docker run -it --rm \ 
-</code></pre></li>
-</ol>
+					<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>话不多说，技术需要不断的学习与实践，下面的内容对于初学者已经足够用了。如果想要深入学习，去看看这本书 <a href="https://www.linuxprobe.com/chapter-00.html" target="_blank" rel="noopener">《Linux 就该这么学》</a> ，我就是看这本书学的，由浅入深 ，不断实践才会有提升。</p>
+<h2 id="入门：了解Linux"><a href="#入门：了解Linux" class="headerlink" title="入门：了解Linux"></a>入门：了解Linux</h2><p> Linux系统内核，套件系统：</p>
 <ul>
-<li><code>docker run</code> ：==启动镜像·== </li>
-<li><code>-it</code> ：<code>-i</code> 交互式操作、 <code>-t</code> 终端</li>
-<li><code>--rm</code>:容器退出随之删除</li>
+<li>RHEL红帽 </li>
+<li>CentOs社区企业系统 </li>
+<li>Fedora 桌面版 </li>
+<li>openSUS </li>
+<li>Debian </li>
+<li>Ubuntu</li>
 </ul>
-<h2 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-<th>释义补充</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>docker image ls</td>
-<td>列出下载至本地的镜像</td>
-<td>由<code>仓库名</code>、<code>标签</code>、<code>镜像ID</code>、<code>创建时间</code>、<code>占用空间</code></td>
-</tr>
-<tr>
-<td>docker system df</td>
-<td>镜像体积</td>
-<td>镜像展开后的本地磁盘空间实际大小</td>
-</tr>
-<tr>
-<td>docker image ls -f dangling=true</td>
-<td>虚悬镜像</td>
-<td>镜像既没有仓库名，也没有标签，均为 <none> 镜像版本更替会出现此类情况</none></td>
-</tr>
-<tr>
-<td>docker image prune</td>
-<td>镜像删除</td>
-<td>删除悬虚镜像</td>
-</tr>
-<tr>
-<td>docker image ls -a</td>
-<td>中间层镜像</td>
-<td>ls 显示顶层镜像，ls-a 中间层镜像罗列出来</td>
-</tr>
-<tr>
-<td>docker image ls -q</td>
-<td>列出悬虚镜像ID</td>
-<td></td>
-</tr>
-<tr>
-<td>docker image ls –format “ID: Repository”</td>
-<td>自定义罗列镜像列表</td>
-<td><code>--format</code> 后面追加其他想要参数</td>
-</tr>
-</tbody>
-</table>
-<h2 id="镜像修改"><a href="#镜像修改" class="headerlink" title="镜像修改"></a>镜像修改</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-<th>释义补充</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; …]</td>
-<td>删除镜像</td>
-<td>根据镜像ID 、长ID 、标签删除 相关容器需要 docker rm [id] 后 在删除镜像</td>
-</tr>
-<tr>
-<td>docker diff</td>
-<td>修改内容的具体变化</td>
-<td></td>
-</tr>
-<tr>
-<td>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</td>
-<td>将容器的存储层保存新的镜像</td>
-<td>就是在原有镜像的基础上，再叠加上容器的存储层，并构成新的镜像。<strong>黑箱操作</strong>==不易常用==</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Dockerfile-的使用"><a href="#Dockerfile-的使用" class="headerlink" title="Dockerfile 的使用"></a>Dockerfile 的使用</h2><h3 id="定制镜像"><a href="#定制镜像" class="headerlink" title="定制镜像"></a>定制镜像</h3><ol>
-<li>新建文件 <code>Dockerfile</code> 写入修改内容<pre><code>FROM nginx //引用基础镜像
-RUN buildDeps=&#39;gcc libc6-dev make&#39; \  // 镜像的修改命令RUN执行 &amp;&amp; 配合使用 达到多次改动 构建一层
-&amp;&amp; apt-get update \ // 支持 Shell 类`\` 转行 、`#` 注释
-...
-&amp;&amp; apt-get purge -y --auto-remove $buildDeps // 最后一步避免臃肿需， 删除为了满足其他软件包的依赖而安装的，但现在不再需要的软件包。
-</code></pre></li>
-<li>构建镜像<br>在 <code>Dockerfile</code> 文件所在目录执行：</li>
-</ol>
-<blockquote>
-<p>$ docker build [选项] &lt;上下文路径/URL/-&gt;</p>
-</blockquote>
-<p>同时构建指定上下文（Context）路径，打包上传到 Docker 引擎<br>==注意==：一般来说，应该会将 Dockerfile 置于一个空目录下，或者项目根目录下。如果该目录下没有所需文件，那么应该把所需文件复制一份过来。如果目录下有些东西确实不希望构建时传给 Docker 引擎，那么可以用 .gitignore 一样的语法写一个 .dockerignore，该文件是用于剔除不需要作为上下文传递给 Docker 引擎的。</p>
-<ol start="3">
-<li>其他 dockr build 用法</li>
-</ol>
-<ul>
-<li>Git repo 进行构建</li>
-<li>给定 tar 压缩包</li>
-<li>标准输入读取 docker build - &lt; Dockerfile</li>
-</ul>
-<h3 id="Dockerfile-指令详解"><a href="#Dockerfile-指令详解" class="headerlink" title="Dockerfile 指令详解"></a>Dockerfile 指令详解</h3><h3 id="COPY-复制文件"><a href="#COPY-复制文件" class="headerlink" title="COPY 复制文件"></a>COPY 复制文件</h3><p>格式：</p>
-<ul>
-<li>COPY &lt;源路径&gt;… &lt;目标路径&gt;</li>
-<li>COPY [“&lt;源路径1&gt;”,… “&lt;目标路径&gt;”]<br>和 RUN 指令一样，也有两种格式，一种类似于命令行，一种类似于函数调用。<h3 id="ADD高级复制"><a href="#ADD高级复制" class="headerlink" title="ADD高级复制"></a>ADD高级复制</h3>ADD 功能更复杂 ，所有的文件复制均使用 COPY 指令，仅在需要自动解压缩的场合使用</li>
-</ul>
-<h3 id="CMD-容器启动命令"><a href="#CMD-容器启动命令" class="headerlink" title="CMD 容器启动命令"></a>CMD 容器启动命令</h3><p>CMD 指令的格式和 RUN 相似，也是两种格式：</p>
-<ul>
-<li>shell 格式：CMD &lt;命令&gt;</li>
-<li>exec 格式：CMD [“可执行文件”, “参数1”, “参数2”…]</li>
-<li>参数列表格式：CMD [“参数1”, “参数2”…]。在指定了 ENTRYPOINT 指令后，用 CMD 指定具体的参数。</li>
-</ul>
-<h3 id="ENV-设置环境变量"><a href="#ENV-设置环境变量" class="headerlink" title="ENV 设置环境变量"></a>ENV 设置环境变量</h3><p>格式有两种：</p>
-<blockquote>
-<ul>
-<li>ENV <key> <value></value></key></li>
-<li>ENV <key1>=<value1> <key2>=<value2>..</value2></key2></value1></key1></li>
-</ul>
-</blockquote>
-<p>下列指令可以支持环境变量展开： <code>ADD</code>、<code>COPY</code>、<code>ENV</code>、<code>EXPOSE</code>、<code>LABEL</code>、<code>USER</code>、<code>WORKDIR</code>、<code>VOLUME</code>、<code>STOPSIGNAL</code>、<code>ONBUILD</code>。</p>
-<h3 id="VOLUME-定义匿名卷"><a href="#VOLUME-定义匿名卷" class="headerlink" title="VOLUME 定义匿名卷"></a>VOLUME 定义匿名卷</h3><p>数据库类需要保存动态数据的应用，其数据库文件应该保存于卷(volume)中，避免忘记挂载卷提前设置匿名卷存储目录</p>
-<pre><code>VOLUME /data
-</code></pre><h3 id="WORKDIR-指定工作目录"><a href="#WORKDIR-指定工作目录" class="headerlink" title="WORKDIR 指定工作目录"></a>WORKDIR 指定工作目录</h3><p>工作目录，在各层的当前目录就被改为指定的目录，如该目录不存在，WORKDIR 会帮你建立目录。<br>==每一个 RUN 都是启动一个容器、执行命令、然后提交存储层文件变更==</p>
-<p>需要改变以后各层的工作目录的位置，那么应该使用 WORKDIR 指令</p>
-<h3 id="HEALTHCHECK-健康检查"><a href="#HEALTHCHECK-健康检查" class="headerlink" title="HEALTHCHECK 健康检查"></a>HEALTHCHECK 健康检查</h3><p>格式：</p>
-<ul>
-<li>HEALTHCHECK [选项] CMD</li>
-<li>&lt;命令&gt;：设置检查容器健康状况的命令<br>HEALTHCHECK NONE：如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令<br>可以判断容器死锁状态，或者死循环状态</li>
-</ul>
-<h3 id="镜像打包复用"><a href="#镜像打包复用" class="headerlink" title="镜像打包复用"></a>镜像打包复用</h3><ol>
-<li>下载镜像压缩包</li>
-<li>定制打包 <code>docker save</code> 和 导入其他设备 <code>docker load</code></li>
-</ol>
-<h2 id="操作容器"><a href="#操作容器" class="headerlink" title="操作容器"></a>操作容器</h2><h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><p><strong>新建并启动</strong></p>
-<ul>
-<li>命令： <code>docker run</code></li>
-<li>交互输入模式：  <code>docker run -t -i ubuntu:14.04 /bin/bash</code> 中 <code>-t</code> Docker 分配伪终端(pesudo-tty)绑定到容器标准输入  <code>-i</code> 让容器的标准输入保持打开。</li>
-</ul>
-<p>当利用  <code>docker run</code> 来创建容器时，Docker 在后台运行的标准操作包括：</p>
-<ul>
-<li>检查本地是否存在指定的镜像，不存在就从公有仓库下载</li>
-<li>利用镜像创建并启动一个容器</li>
-<li>分配一个文件系统，并在只读的镜<br>像层外面挂载一层可读写层</li>
-<li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去</li>
-<li>从地址池配置一个 ip 地址给容器</li>
-<li>执行用户指定的应用程序</li>
-<li>执行完毕后容器被终止</li>
-</ul>
-<p><strong>启动已终止容器</strong><br>可以利用 <code>docker container start</code> 命令，直接将一个已经终止的容器启动运行。</p>
-<h3 id="守护态运行"><a href="#守护态运行" class="headerlink" title="守护态运行"></a>守护态运行</h3><p><strong>后台运行</strong></p>
-<p>让 Docker 在后台运行而不是直接把执行命令的结果输出在当前宿主机下。此时，可以通过添加 -d 参数来实现</p>
-<p>通过 <code>docker container ls</code> 命令来查看容器信息</p>
-<p>要获取容器的输出信息，可以通过 <code>docker container logs</code> 命令</p>
-<h3 id="终止容器"><a href="#终止容器" class="headerlink" title="终止容器"></a>终止容器</h3><p>使用 <code>docker container stop</code> 来终止一个运行中的容器。</p>
-<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><p><code>docker exec -it</code> 镜像名 <code>-i</code> 标准输入保持打开 <code>-t</code> 分配伪终端 并且 exit 不会停止容器 <code>docker attach</code> 会停止</p>
-<h3 id="导入和导出"><a href="#导入和导出" class="headerlink" title="导入和导出"></a>导入和导出</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>docker export 镜像id &gt; file.tar</code></td>
-<td>导出容器快照到本地</td>
-</tr>
-<tr>
-<td>`cat ubuntu.tar</td>
-<td>docker import` - 镜像名</td>
-<td>导入容器快照为镜像，丢弃所有记录</td>
-</tr>
-<tr>
-<td><code>docker load -i file.tar</code></td>
-<td>导入加载镜像到本地同时保持完整历史记录，占用空间大</td>
-</tr>
-</tbody>
-</table>
-<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><ul>
-<li><code>docker container rm</code> 删除一个处于终止的容器 </li>
-<li><code>docker container ls -a</code> 查看所有处于终止的容器</li>
-<li><code>docker container prune</code> 清理所有已终止容器</li>
-</ul>
-<h3 id="三剑客-Compose-项目"><a href="#三剑客-Compose-项目" class="headerlink" title="三剑客- Compose 项目"></a>三剑客- Compose 项目</h3><p>允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）<br>重要概念：</p>
-<ul>
-<li><p>服务 (service)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。</p>
-</li>
-<li><p>项目 (project)：由一组关联的应用容器组成的一个完整业务单元，在 docker-compose.yml 文件中定义。</p>
-</li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>文件组成 </p>
+<h2 id="安装Linux-环境"><a href="#安装Linux-环境" class="headerlink" title="安装Linux 环境"></a>安装Linux 环境</h2><ol>
+<li><p>虚拟机环境</p>
 <ol>
-<li>Dockerfile </li>
-<li>docker-compose.yml </li>
-<li>web 文件</li>
+<li>虚拟机VM</li>
+<li>安装linux 系统</li>
 </ol>
-<p>运行项目： <code>docker-compose up</code></p>
-<h2 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h2><h3 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h3><table>
+</li>
+<li><p>linux系统配置</p>
+<ol>
+<li>选择定制版SOFTWARE SELECTION</li>
+<li>选中 Server with GUI</li>
+<li>NETWORK&amp;HOSTNAME 设置hostname</li>
+<li>DESTINATION 分区</li>
+<li>Begin Installation 开始安装</li>
+<li>ROOT PASSWORD</li>
+</ol>
+</li>
+</ol>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><pre><code>命令名称 [命令参数] [命令对象]
+
+</code></pre><p>–<strong>完整选项</strong> 和 -<strong>字母缩写</strong> 区分</p>
+<table>
+<thead>
+<tr>
+<th>命令参数</th>
+<th>格式示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长格式</td>
+<td>man –help</td>
+</tr>
+<tr>
+<td>短格式</td>
+<td>man -h</td>
+</tr>
+</tbody>
+</table>
+<h3 id="系统工作命令"><a href="#系统工作命令" class="headerlink" title="系统工作命令"></a>系统工作命令</h3><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -371,36 +202,562 @@ RUN buildDeps=&#39;gcc libc6-dev make&#39; \  // 镜像的修改命令RUN执行 
 </thead>
 <tbody>
 <tr>
-<td>docker volume create 卷名</td>
-<td>创建数据卷</td>
+<td>echo</td>
+<td>显示</td>
 </tr>
 <tr>
-<td>docker volume ls</td>
-<td>查看所有的 数据卷</td>
+<td>date</td>
+<td>时间</td>
 </tr>
 <tr>
-<td>docker volume inspect 卷名</td>
-<td>数据卷详细信息</td>
+<td>reboot</td>
+<td>重启服务</td>
 </tr>
 <tr>
-<td>docker run –mount source=卷名</td>
-<td>镜像挂载数据卷</td>
+<td>poweroff</td>
+<td>关机</td>
 </tr>
 <tr>
-<td>docker inspect web</td>
-<td>主机内 查看 web 容器信息 </td>
+<td>wget + url</td>
+<td>下载文件</td>
 </tr>
 <tr>
-<td>docker volume rm 卷名</td>
-<td>删除数据卷</td>
+<td>ps</td>
+<td>进程</td>
 </tr>
 <tr>
-<td>docker volume prune</td>
-<td>删除所有无主卷</td>
+<td>top</td>
+<td>运维状态</td>
+</tr>
+<tr>
+<td>pidof</td>
+<td>查进程pid</td>
+</tr>
+<tr>
+<td>kill、killall</td>
+<td>结束进程、结束服务程序</td>
 </tr>
 </tbody>
 </table>
-
+<blockquote>
+<p>快捷键 Ctrl + C 立即停止正执行的命令</p>
+</blockquote>
+<h3 id="系统状态命令"><a href="#系统状态命令" class="headerlink" title="系统状态命令"></a>系统状态命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ifconfig</td>
+<td>网卡配置、状态 </td>
+</tr>
+<tr>
+<td>uname</td>
+<td>内核、版本 </td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>负载状态值越低越好 生产不超过5</td>
+</tr>
+<tr>
+<td>free -h</td>
+<td>内存使用情况 </td>
+</tr>
+<tr>
+<td>who</td>
+<td>当前登录信息 </td>
+</tr>
+<tr>
+<td>last</td>
+<td>登录记录 </td>
+</tr>
+<tr>
+<td>history</td>
+<td>默认1000条执行过的命令记录！条数 调用用过的命令</td>
+</tr>
+<tr>
+<td>history -c</td>
+<td>清空当前用户命令记录 </td>
+</tr>
+<tr>
+<td>  sosreport</td>
+<td>收集系统信息输出诊断文档  </td>
+</tr>
+</tbody>
+</table>
+<h3 id="工作目录切换命令"><a href="#工作目录切换命令" class="headerlink" title="工作目录切换命令"></a>工作目录切换命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  pwd</td>
+<td>当前目录路径</td>
+</tr>
+<tr>
+<td>  cd</td>
+<td>切换工作路径 </td>
+</tr>
+<tr>
+<td>  ls -a</td>
+<td>全部目录文件</td>
+</tr>
+<tr>
+<td>  ls -l</td>
+<td>展示文件属性、大小</td>
+</tr>
+<tr>
+<td>  ls -ld [文件]</td>
+<td>文件权限、属性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文本文件编辑命令"><a href="#文本文件编辑命令" class="headerlink" title="文本文件编辑命令"></a>文本文件编辑命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  cat</td>
+<td>查看内容较少文本内容</td>
+</tr>
+<tr>
+<td>  more</td>
+<td>查看内容多文本内容</td>
+</tr>
+<tr>
+<td>  head -n 行数 [文件]</td>
+<td>查看前N行代码</td>
+</tr>
+<tr>
+<td>  tail -n 行数 [文件]</td>
+<td>查看最后N行代码</td>
+</tr>
+<tr>
+<td>  tail -f</td>
+<td>持续刷新查看文件内容</td>
+</tr>
+<tr>
+<td>  tr  [原始字符][替换字符]</td>
+<td>替换掉文件内容</td>
+</tr>
+<tr>
+<td>  wc</td>
+<td>统计行数、字数、字节数</td>
+</tr>
+<tr>
+<td>  stat</td>
+<td>文件存储信息和时间</td>
+</tr>
+<tr>
+<td>  cut</td>
+<td>按‘列’ 提取文本字符</td>
+</tr>
+<tr>
+<td>  diff</td>
+<td>多文件对比差异</td>
+</tr>
+<tr>
+<td>  diff –brief</td>
+<td>显示比较后的结果</td>
+</tr>
+<tr>
+<td>  diff -c [文件名]</td>
+<td>显示具体不同配合以上命令</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件目录管理命令"><a href="#文件目录管理命令" class="headerlink" title="文件目录管理命令"></a>文件目录管理命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>touch</td>
+<td>创建空白文件或设置时间</td>
+</tr>
+<tr>
+<td>mkdir -p</td>
+<td>创建递归嵌套叠层目录</td>
+</tr>
+<tr>
+<td>cp [源][目标文件]</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>剪切文件</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>dd if=输入文件名 of=输出文件名 bs=块大小 count=个数</td>
+<td>按块复制文件或转换文件</td>
+</tr>
+<tr>
+<td>file</td>
+<td>查文件类型 </td>
+</tr>
+</tbody>
+</table>
+<h3 id="打包压缩与搜索命令"><a href="#打包压缩与搜索命令" class="headerlink" title="打包压缩与搜索命令"></a>打包压缩与搜索命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>      tar</td>
+<td>对文件打包或解压</td>
+</tr>
+<tr>
+<td>      tar -czvf</td>
+<td>x 解压 c 创建压缩文件、z 指定Gzip格式 v 显示解压缩过程 f 解压缩目标文件名</td>
+</tr>
+<tr>
+<td>      grep</td>
+<td>关键词搜索</td>
+</tr>
+<tr>
+<td>      grep -n</td>
+<td>显示搜索行号</td>
+</tr>
+<tr>
+<td>      grep -v</td>
+<td>反向选择关键词以外的信息</td>
+</tr>
+<tr>
+<td>      find</td>
+<td>按指定条件查找文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="管道符、重定向、环境变量"><a href="#管道符、重定向、环境变量" class="headerlink" title="管道符、重定向、环境变量"></a>管道符、重定向、环境变量</h2><h3 id="输入输出重定向"><a href="#输入输出重定向" class="headerlink" title="输入输出重定向"></a>输入输出重定向</h3><ul>
+<li><p>标准输入重定向（STDIN，描述符0）文件-&gt;命令</p>
+</li>
+<li><p>标准输出重定向（STDOUT，描述符1）命令-&gt;文件</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重定向符号</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令 &gt; 文件</td>
+<td>标准输出重定向文件（清空原文件数据）</td>
+</tr>
+<tr>
+<td>命令 ２&gt; 文件</td>
+<td>错误输出重定向文件（清空原文件数据）</td>
+</tr>
+<tr>
+<td>命令　&gt;&gt;　文件</td>
+<td>标准输出重定向文件（追加原有内容的后面）</td>
+</tr>
+<tr>
+<td>命令　&gt;&gt; 文件2&gt;&amp;1　</td>
+<td>标准与错误共同写入文件</td>
+</tr>
+</tbody>
+</table>
+<pre><code>管道符 ：命令A | 命令B | .. 
+通配符 ：星号*匹配多个、问号？匹配单个、[0-9] 匹配内部中一个
+转义符 ：
+1. 反斜杠\ 变量转字符串 
+2. 单引号&#39;&#39; 所有变量转字符串
+3. 双引号&quot;&quot; 保留不转义
+4. 反引号`` 命令执行返回结果
+</code></pre><p><strong>环境变量</strong></p>
+<pre><code>自定义命令：alias 别名=命令
+取消别名： unalias 命令
+PATH 路径组成的变量
+</code></pre><table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HOME</td>
+<td>用户主目录</td>
+</tr>
+<tr>
+<td>SHELL</td>
+<td>用户使用解析器名称</td>
+</tr>
+<tr>
+<td>HISTSIZE</td>
+<td>输出的历史命令记录条数</td>
+</tr>
+<tr>
+<td>HISTFILESIZE</td>
+<td>保存的历史命令记录条数</td>
+</tr>
+<tr>
+<td>MALL</td>
+<td>邮件保存路径</td>
+</tr>
+<tr>
+<td>LANG</td>
+<td>系统语言</td>
+</tr>
+<tr>
+<td>RANDOM</td>
+<td>生成一个随机数</td>
+</tr>
+<tr>
+<td>PS1</td>
+<td>Bash解析器的提示符</td>
+</tr>
+<tr>
+<td>PATH</td>
+<td>定义解析器搜索用户执行命令的路径</td>
+</tr>
+<tr>
+<td>EDITOR</td>
+<td>用户默认的文本编辑器</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>自定义全局变量 export $变量名 =/路径/..</p>
+</blockquote>
+<h2 id="Vim编辑器-与-Shell-命令脚本"><a href="#Vim编辑器-与-Shell-命令脚本" class="headerlink" title="Vim编辑器 与 Shell 命令脚本"></a>Vim编辑器 与 Shell 命令脚本</h2><h3 id="Vim-编辑器使用"><a href="#Vim-编辑器使用" class="headerlink" title="Vim 编辑器使用"></a>Vim 编辑器使用</h3><p>输入模式<---->命令模式<--->末行模式</---></----></p>
+<ul>
+<li>输入模式：控制光标，复制、粘贴、删除、查找</li>
+<li>命令模式：文本录入</li>
+<li>末行模式： 保存或退出设置编辑环境</li>
+</ul>
+<p><strong>Vim常用命令</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dd</td>
+<td>剪切（删除）光标所在行</td>
+</tr>
+<tr>
+<td>5dd</td>
+<td>剪切（删除）光标开始的5行</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制光标所在行</td>
+</tr>
+<tr>
+<td>5yy</td>
+<td>复制光标开始的后5行</td>
+</tr>
+<tr>
+<td>n / N</td>
+<td>配合？/ 字符串查询 上个/下个</td>
+</tr>
+<tr>
+<td>u</td>
+<td>撤销上一步操作</td>
+</tr>
+<tr>
+<td>p</td>
+<td>粘贴 复制或剪切的内容到光标后面</td>
+</tr>
+</tbody>
+</table>
+<p><strong>末行模式常用命令</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:w</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>强制保存</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td>强制保存退出</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>显示行号 </td>
+</tr>
+<tr>
+<td>:set nonu</td>
+<td>不显示行号 </td>
+</tr>
+<tr>
+<td>:命令</td>
+<td>执行该命令</td>
+</tr>
+<tr>
+<td>:整数</td>
+<td>跳转到该行</td>
+</tr>
+<tr>
+<td>:s /one/two</td>
+<td>当前光标所在行第一个one替换two</td>
+</tr>
+<tr>
+<td>:s /one/two/g</td>
+<td>当前光标所在行所有one替换two</td>
+</tr>
+<tr>
+<td>?字符串</td>
+<td>文本中搜索该字符串</td>
+</tr>
+<tr>
+<td>/字符串</td>
+<td>文本中搜索该字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编写-Shell-脚本"><a href="#编写-Shell-脚本" class="headerlink" title="编写 Shell 脚本"></a>编写 Shell 脚本</h3><p>Shell 脚本工作方式： </p>
+<ol>
+<li>交互式（Interactive）：输入一条命令立即执行</li>
+<li>批处理（Batch）：完整的 shell 脚本，一次性执行诸多命令</li>
+</ol>
+<p><strong>编写流程</strong></p>
+<pre><code>[Docker]vim shell.sh  // 创建脚本文件编写 后缀为.sh 标识
+</code></pre><p>基本构造：</p>
+<pre><code>#!/bin/bash    #用哪种 Shell 解释器执行脚本
+#用在目录快速切换 #此行作为注释使用 
+cd ~   #写入 linux 命令
+ls 
+</code></pre><p>执行方式：</p>
+<pre><code> bash shell.sh  // bash 解释器执行脚本
+</code></pre><pre><code>[root@macbookPro ~] bash shell.sh one two three  // 脚本传入参数one.. 对应脚本内 $1 $2 $3
+</code></pre><p><strong>条件判断语句</strong></p>
+<pre><code>[ 条件表达式 ] // 左右均有空格
+&amp;&amp; 与 、|| 或、 ! 非 等同于 取相反值
+比较后返回值
+echo $?  // 1 不成立 false 0 成立 true
+</code></pre><ol>
+<li>整数比较运算符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-eq</td>
+<td>是否等于</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>是否等于或小于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>是否大于或等于</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>字符串比较运算符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>字符串内容是否相同</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>字符串内容是否不同</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>字符串内容是否为空</td>
+</tr>
+</tbody>
+</table>
+<h4 id="条件控制语句【if】"><a href="#条件控制语句【if】" class="headerlink" title="条件控制语句【if】"></a>条件控制语句【if】</h4><pre><code>if  条件测试操作 1
+  then 执行命令序列
+elseif  条件测试操作 2
+  then 执行命令序列2
+else
+       执行命令序列3
+fi    
+</code></pre><h4 id="条件循环语句【for】"><a href="#条件循环语句【for】" class="headerlink" title="条件循环语句【for】"></a>条件循环语句【for】</h4><pre><code>for 变量名 in 取值列表
+do
+   命令序列
+done   
+</code></pre><h4 id="条件循环语句【while】"><a href="#条件循环语句【while】" class="headerlink" title="条件循环语句【while】"></a>条件循环语句【while】</h4><pre><code>while 条件测试操作
+do 
+   命令序列
+done   
+</code></pre><h4 id="条件循环语句【case】"><a href="#条件循环语句【case】" class="headerlink" title="条件循环语句【case】"></a>条件循环语句【case】</h4><p>类似于 php switch 条件中的值 执行不同内容</p>
+<pre><code>case 变量值 in
+模式1) // 一般做判断条件、值范围
+   命令序列1
+   ;;
+模式2)   
+   命令序列1
+   ;;
+   ...... // 此处省略
+   *)
+   默认命令序列
+esac
+</code></pre>
 				</div>
 			</div>
 
@@ -408,15 +765,9 @@ RUN buildDeps=&#39;gcc libc6-dev make&#39; \  // 镜像的修改命令RUN执行 
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/09/18/Git配置多个SSH-key和git账号/" title="Git配置多个SSH key和git账号">
-      		&laquo;上一篇 
-		</a>
-		</li>
-	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/09/14/HEXO教程/" title="Mac 搭建基于 Github 的 HEXO博客">
+		<a class="pull-right" href="/2018/09/22/Maca编程开发必备工具/" title="Mac 编程开发必备工具">
 			下一篇&raquo;
 		</a>
 		</li>

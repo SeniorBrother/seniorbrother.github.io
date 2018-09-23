@@ -7,7 +7,7 @@
 		
 
 <head>
-	<title>HEXO教程</title>
+	<title>Mac 搭建基于 Github 的 HEXO博客</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -49,7 +49,7 @@
 	
 	
 		
-			<p class="page-name">HEXO教程</p>
+			<p class="page-name">Mac 搭建基于 Github 的 HEXO博客</p>
 		
 		
 	
@@ -111,7 +111,7 @@
 					
 	
 		<a href="/2018/09/14/HEXO教程/" itemprop="url">		
-			HEXO教程		
+			Mac 搭建基于 Github 的 HEXO博客		
 		</a>
 	
 
@@ -133,7 +133,7 @@
 						
 							<i class="fa fa-tags"></i>
 							
-								<a href="#教程" title="教程" rel="1">教程</a>&nbsp
+								<a href="#教程" title="教程" rel="3">教程</a>&nbsp
 							
 								<a href="#HEXO" title="HEXO" rel="1">HEXO</a>&nbsp
 													 											
@@ -144,7 +144,173 @@
 
 			<div class="am-article-bd">
 				<div class="content">
-					<h2 id="HEXO-安装本地"><a href="#HEXO-安装本地" class="headerlink" title="HEXO 安装本地"></a>HEXO 安装本地</h2><h2 id="HEXO-配置到-github"><a href="#HEXO-配置到-github" class="headerlink" title="HEXO 配置到 github"></a>HEXO 配置到 github</h2><h2 id="HEXO-基本使用方法"><a href="#HEXO-基本使用方法" class="headerlink" title="HEXO 基本使用方法"></a>HEXO 基本使用方法</h2>
+					<p>对于开发人员学习到的内容，都喜欢分享自己成果，最好的去处是论坛、博客之类，但是想要自己的个人博客，又想发布到 <code>GitHub</code> ，此时就可以利用 Hexo + Github 实现个人博客小站啦！</p>
+<h2 id="HEXO-安装本地"><a href="#HEXO-安装本地" class="headerlink" title="HEXO 安装本地"></a>HEXO 安装本地</h2><h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
+<li>Node.js</li>
+<li>Git</li>
+</ul>
+<p>安装可以参考<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a><br>建议通过终端命令行安装</p>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>新建博客目录</p>
+<pre><code>$ npm install -g hexo-cli
+</code></pre><h3 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h3><p>创建一个目录用来作为你的blog目录</p>
+<pre><code>$ mkdir blog // 新建文件夹博客目录 自定义
+$ cd blog // 访问目录
+$ hexo init // 初始化hexo
+</code></pre><h3 id="启动Hexo"><a href="#启动Hexo" class="headerlink" title="启动Hexo"></a>启动Hexo</h3><pre><code>$ hexo server
+</code></pre><p>可简写输入命令 </p>
+<pre><code>$ hexo s
+</code></pre><p>返回结果：</p>
+<pre><code>INFO  Start processing
+INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.
+</code></pre><p>启动服务后，本地浏览器 访问 <code>http://localhost:4000</code></p>
+<h2 id="HEXO-配置到-github"><a href="#HEXO-配置到-github" class="headerlink" title="HEXO 配置到 github"></a>HEXO 配置到 github</h2><h3 id="注册Git"><a href="#注册Git" class="headerlink" title="注册Git"></a>注册Git</h3><p>注册地址：<a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
+<h3 id="新建git库"><a href="#新建git库" class="headerlink" title="新建git库"></a>新建git库</h3><p>新建仓库，名为<code>用户名.github.io</code>固定写法，如<code>seniorbrother.github.io</code>。必须是自己的 GitHub 个人资料名。</p>
+<h3 id="同步本地博客到Github"><a href="#同步本地博客到Github" class="headerlink" title="同步本地博客到Github"></a>同步本地博客到Github</h3><p>官方文档传送门：<a href="https://hexo.io/zh-cn/docs/deployment" target="_blank" rel="noopener"><strong>Hexo 部署</strong></a></p>
+<ul>
+<li>编辑 hexo 配置文件：</li>
+</ul>
+<pre><code>$ cd blog
+$ vim _config.yml
+</code></pre><ul>
+<li>在文件最后，按 <code>i</code> 输入模式</li>
+</ul>
+<pre><code>deploy:
+  type: git
+  repository:
+    github：https://github.com/SeniorBrother/seniorbrother.github.io.git // 个人项目 Https 地址
+    aliyun：https://code.aliyun.com/23165-Sunrise/note.git // aliyun 项目 Https 地址
+  branch: master   // master分支  
+</code></pre><p> 此处如果你有 <code>aliyun</code> 或者 <code>coding</code> 等git服务平台账号 也可以配置同步到其他账号的版本库</p>
+<ul>
+<li>安装插件 </li>
+</ul>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre><ul>
+<li>生成文件推送线上</li>
+</ul>
+<pre><code>$ hexo clean
+$ hexo generate
+$ hexo deploy
+</code></pre><p>等待几分钟浏览器输入：<a href="seniorbrother.github.io">seniorbrother.github.io</a></p>
+<h2 id="HEXO-基本使用方法"><a href="#HEXO-基本使用方法" class="headerlink" title="HEXO 基本使用方法"></a>HEXO 基本使用方法</h2><h3 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h3><p>官方文档传送门：<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">hexo配置</a></p>
+<ul>
+<li>编辑 _config.yml</li>
+</ul>
+<pre><code>$ vim _config.yml
+</code></pre><ul>
+<li>参考配置</li>
+</ul>
+<pre><code># Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site                 ##修改以适应搜索引擎的收录
+title: 渡-心记            ##定义网站的标题
+subtitle: 心记             ##定义网站的副标题
+description: 曾梦想仗剑走天涯，后来 bug 多没去!          ##定义网站的描述
+author: liudou      ##定义网站的负责人
+language:              ##定义网站的语言,默认zh-Hans
+timezone:              ##定义网站的时区
+
+# URL
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://yoursite.com   ##定义网站访问的域名
+root: /      ##定义所在Web文件夹在哪个目录
+permalink: :year/:month/:day/:title/  ##定义时间格式
+permalink_defaults:
+
+# Directory
+source_dir: source   ##定义从哪个文件夹获取博客资料
+public_dir: public   ##定义生成静态网站到哪个文件夹
+
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+#highlight:  enable: false
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: false
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+search:
+  path: search.json
+  zipPath: search.zip
+  versionPath: searchVersion.txt
+  field: post
+  #field: post, page or all
+# Category &amp; Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10  ##定义每一页多少条博客
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: Annie  ##定义使用的主题
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy: # 配置 本地同步部署到 git
+  type: git
+  repo:
+        github: https://github.com/SeniorBrother/sunrise.github.io.git # 项目 Https 地址 同步到git库
+        aliyun: https://code.aliyun.com/23165-Sunrise/note.git
+  branch: master
+</code></pre><h3 id="文章编辑"><a href="#文章编辑" class="headerlink" title="文章编辑"></a>文章编辑</h3><ul>
+<li>在自己博客目录输入以下命令：</li>
+</ul>
+<pre><code>hexo new &quot;Hello&quot; // 此处&quot;文章名称&quot;
+</code></pre><ul>
+<li>在 <code>blog/source/_posts/</code>目录， 用编辑器打开 md 文件：</li>
+</ul>
+<pre><code>---
+title: Hexo安装 #文章标题
+date: 2018-05-20 13:14:00 #文章创建时间
+categories: &quot;Hexo教程&quot; #文章类别可以省略
+tags: #文章标签 可以省略
+- 标签1
+- 标签2
+---
+此处编写内容
+</code></pre><ul>
+<li>本地查看文章效果</li>
+</ul>
+<pre><code>$ hexo s
+</code></pre><p>访问：<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
+<ul>
+<li>推送文章</li>
+</ul>
+<pre><code>$ hexo generate // 生成静态文件
+$ hexo deploy // 推送部署到 git
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个 Hexo 搭建过程，一定要做好准备工作：<br>git 库配置 ，其次不建议用 域名重定向 把 github 博客页面到自己的域名下，国外网站访问真心是慢。<br>建议保存<code>文章名.md</code> 文件到现实版本库</p>
+
 				</div>
 			</div>
 
@@ -160,7 +326,7 @@
 	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/09/13/Hi,Sunrise/" title="你好，清晨">
+		<a class="pull-right" href="/2018/09/14/PHP-base64转码/" title="字符串转换base64">
 			下一篇&raquo;
 		</a>
 		</li>

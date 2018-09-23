@@ -131,11 +131,15 @@
 
 			<div class="am-article-bd">
 				<div class="content">
-					<pre><code>    $string = &#39;仅限推广员开通使用， 他用无效&#39;;
-    $data = base64_encode($string);
-    $data = str_replace(array(&#39;+&#39;,&#39;/&#39;,&#39;=&#39;),array(&#39;-&#39;,&#39;_&#39;,&#39;&#39;),$data);
-    return $this-&gt;end($data);
-</code></pre>
+					<hr>
+<p>   title: 字符串转换base64<br>   date: 2018-09-14 15:09:26<br>   categories: “编程技术”<br>   tags:</p>
+<ul>
+<li>教程</li>
+<li>PHP</li>
+</ul>
+<hr>
+<p>$string = ‘仅限推广员开通使用， 他用无效’;<br>$data = base64_encode($string);<br>$data = str_replace(array(‘+’,’/‘,’=’),array(‘-‘,’_’,’’),$data);<br>return $this-&gt;end($data);</p>
+
 				</div>
 			</div>
 
